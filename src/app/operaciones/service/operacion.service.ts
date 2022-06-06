@@ -72,6 +72,20 @@ export class OperacionService {
       })
     );
   }
+
+  updateOperacion(operacion: Operacion): Observable<any> {
+    return this.http.patch(`${this.urlEndPoint}/${operacion.operacionId}`, operacion).pipe(
+      catchError((e) => {
+        if (e.status === 400) {
+          return throwError(() => new Error(e));
+        }
+        if (e.error.mensaje) {
+          console.error(e.error.mensaje);
+        }
+        return throwError(() => new Error(e));
+      })
+    );
+  }
   
 
 }

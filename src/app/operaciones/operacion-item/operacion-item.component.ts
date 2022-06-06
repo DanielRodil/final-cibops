@@ -18,6 +18,7 @@ export class OperacionItemComponent implements OnInit {
 
   @Input() operacion: Operacion = new OperacionImpl();
   @Output() operacionEliminar = new EventEmitter<OperacionImpl>();
+  @Output() operacionEditar = new EventEmitter<OperacionImpl>();
 
   constructor() { }
 
@@ -28,6 +29,10 @@ export class OperacionItemComponent implements OnInit {
     if (confirm(`¿Está seguro de que desea eliminar la operación ${this.operacion.nombre} ?`)){
       this.operacionEliminar.emit(this.operacion);
     }
+  }
+
+  editar(): void{
+    this.operacionEditar.emit(this.operacion);
   }
 
 }

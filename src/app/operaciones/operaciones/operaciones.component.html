@@ -6,7 +6,8 @@
       <div *ngFor="let operacion of operaciones">
         <app-operacion-item
           [operacion]="operacion"
-          (operacionEliminar)="onOperacionEliminar($event)">
+          (operacionEliminar)="onOperacionEliminar($event)"
+          (operacionEditar)="onOperacionEditar($event)">
         </app-operacion-item>
 
         <pre>{{ operacion | json }}</pre>
