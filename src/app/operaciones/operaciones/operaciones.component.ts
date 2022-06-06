@@ -3,6 +3,7 @@ import { Operacion } from '../models/operacion';
 import { faMagnifyingGlass, faPencil, faTrashCan } from '@fortawesome/free-solid-svg-icons';
 import { OperacionService } from '../service/operacion.service';
 import { OperacionImpl } from '../models/operacion-impl';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-operaciones',
@@ -17,9 +18,9 @@ export class OperacionesComponent implements OnInit {
 
   operacion: Operacion = new OperacionImpl ();
   operaciones: Operacion[] = [];
-  router: any;
 
-  constructor(private operacionService: OperacionService) { }
+  constructor(private operacionService: OperacionService,
+              private router : Router) { }
 
   ngOnInit(): void {
       this.onDataTable();
@@ -31,11 +32,8 @@ export class OperacionesComponent implements OnInit {
   }
 
   onOperacionEliminar(operacion: Operacion){
-    this.operacionService.deleteOperacion(operacion.operacionId).subscribe(response => {
-      this.router.navigate(['operaciones']);
-      this.operaciones = this.operaciones.filter(m => operacion !== m)
-      location.reload;
-    });
+    this.operacionService.deleteOperacion(operacion.operacionId).subscribe();
+    this.router.navigate(['operaciones']);
   }
 
 }

@@ -25,7 +25,7 @@ export class OperacionItemComponent implements OnInit {
   }
 
   eliminar(): void{
-    if (confirm('¿Está seguro?')){
+    if (confirm(`¿Está seguro de que desea eliminar la operación ${this.operacion.nombre} ?`)){
       this.operacionEliminar.emit(this.operacion);
     }
   }
