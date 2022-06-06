@@ -41,4 +41,8 @@ export class OperacionesComponent implements OnInit {
     this.router.navigate([url])
   }
 
+  verDatos(operacion: Operacion): void {
+    this.operacion = operacion;
+  }
+
 }
