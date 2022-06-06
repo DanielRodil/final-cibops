@@ -1,0 +1,18 @@
+<body class="d-flex flex-column min-vh-100">
+  <main>
+    <div class="container mt-auto">
+      <h2>Operaciones</h2>
+
+      <div *ngFor="let operacion of operaciones">
+        <app-operacion-item
+          [operacion]="operacion"
+          (operacionEliminar)="onOperacionEliminar($event)">
+        </app-operacion-item>
+
+        <pre>{{ operacion | json }}</pre>
+
+      </div>
+
+    </div>
+  </main>
+</body>
