@@ -18,7 +18,7 @@ export class OperacionItemComponent implements OnInit {
 
   @Input() operacion: Operacion = new OperacionImpl();
   @Output() operacionEliminar = new EventEmitter<OperacionImpl>();
-  @Output() operacionEditar = new EventEmitter<OperacionImpl>();
+  @Output() operacionConsultar = new EventEmitter<OperacionImpl>();
   @Output() operacionSeleccionada = new EventEmitter<Operacion>();
 
   constructor() { }
@@ -32,8 +32,8 @@ export class OperacionItemComponent implements OnInit {
     }
   }
 
-  editar(): void{
-    this.operacionEditar.emit(this.operacion);
+  consultar(): void{
+    this.operacionConsultar.emit(this.operacion);
   }
 
 }

@@ -36,7 +36,7 @@ export class OperacionesComponent implements OnInit {
     this.router.navigate(['operaciones']);
   }
 
-  onOperacionEditar(operacion: Operacion){
+  onOperacionConsultar(operacion: Operacion){
     let url = `operaciones/formularioOperacion/${operacion.operacionId}`;
     this.router.navigate([url])
   }
