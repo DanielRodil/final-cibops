@@ -86,6 +86,20 @@ export class OperacionService {
       })
     );
   }
+
+  getOperacion(id: string): Observable<any> {
+    return this.http.get<any>(`${this.urlEndPoint}/${id}`).pipe(
+      catchError((e) => {
+        if (e.status === 400) {
+          return throwError(() => new Error(e));
+        }
+        if (e.error.mensaje) {
+          console.error(e.error.mensaje);
+        }
+        return throwError(() => new Error(e));
+      })
+    );
+  }  
   
 
 }

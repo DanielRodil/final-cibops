@@ -7,8 +7,8 @@ import { OperacionItemComponent } from './operacion-item/operacion-item.componen
 import { FormsModule } from '@angular/forms';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { OperacionFormComponent } from './operacion-form/operacion-form.component';
-import { OperacionFormEditarComponent } from './operacion-form-editar/operacion-form-editar.component';
 import { OperacionComponent } from './operaciones/operacion/operacion.component';
+import { OperacioneditarComponent } from './operaciones/operacioneditar/operacioneditar.component';
 
 
 @NgModule({
@@ -16,8 +16,8 @@ import { OperacionComponent } from './operaciones/operacion/operacion.component'
     OperacionesComponent,
     OperacionItemComponent,
     OperacionFormComponent,
-    OperacionFormEditarComponent,
-    OperacionComponent
+    OperacionComponent,
+    OperacioneditarComponent
   ],
   imports: [
     CommonModule,

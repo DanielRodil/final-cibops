@@ -16,19 +16,15 @@ export class OperacionesComponent implements OnInit {
   faPencil = faPencil;
   faTrashCan = faTrashCan;
 
-  operacion: Operacion = new OperacionImpl ();
+  operacionVerDatos: Operacion = new OperacionImpl ();
   operaciones: Operacion[] = [];
 
   constructor(private operacionService: OperacionService,
               private router : Router) { }
 
   ngOnInit(): void {
-      this.onDataTable();
-  }
-
-  onDataTable() {
     this.operacionService.getOperaciones().subscribe((response) => this.operaciones =
-    this.operacionService.extraerOperaciones(response));
+    this.operacionService.extraerOperaciones(response));  
   }
 
   onOperacionEliminar(operacion: Operacion){
@@ -37,12 +33,13 @@ export class OperacionesComponent implements OnInit {
   }
 
   onOperacionConsultar(operacion: Operacion){
-    let url = `operaciones/formularioOperacion/${operacion.operacionId}`;
+    this.verDatos(operacion);
+    let url = `operaciones/${operacion.operacionId}`;
     this.router.navigate([url])
   }
 
   verDatos(operacion: Operacion): void {
-    this.operacion = operacion;
+    this.operacionVerDatos = operacion;
   }
 
 }

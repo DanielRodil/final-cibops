@@ -2,7 +2,6 @@ import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { Operacion } from '../models/operacion';
 import { OperacionImpl } from '../models/operacion-impl';
 import { faMagnifyingGlass, faPencil, faTrashCan } from '@fortawesome/free-solid-svg-icons';
-import { OperacionService } from '../service/operacion.service';
 
 
 @Component({
@@ -34,6 +33,10 @@ export class OperacionItemComponent implements OnInit {
 
   consultar(): void{
     this.operacionConsultar.emit(this.operacion);
+  }
+
+  seleccionar(): void {
+    this.operacionSeleccionada.emit(this.operacion);
   }
 
 }
