@@ -13,16 +13,16 @@ import { OperacionService } from '../../service/operacion.service';
 })
 export class OperacioneditarComponent implements OnInit {
 
-  operacion$: Observable<any> = new Observable<any>();
-
-  @Input() operacion: Operacion = new OperacionImpl();
+  operacion: Operacion = new OperacionImpl();
 
   constructor(private operacionService: OperacionService,
               private activatedRoute: ActivatedRoute,
               private router: Router) { }
 
   ngOnInit(): void {
-    this.operacion$ = this.cargarOperacion();
+    let id: string = this.cargarOperacion();
+    this.operacionService.getOperacion(id).subscribe(response => 
+      this.operacion = this.operacionService.mapearOperacion(response));
   }
 
   onEditarOperacion(): void {
@@ -30,8 +30,8 @@ export class OperacioneditarComponent implements OnInit {
     this.router.navigate(['/operaciones']);
   }
 
-  cargarOperacion(): any {
-    return this.operacionService.getOperacion(this.activatedRoute.snapshot.params['id']);
+  cargarOperacion(): string {
+    return this.activatedRoute.snapshot.params['id'];
   }
 
 }
